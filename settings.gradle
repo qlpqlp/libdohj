@@ -1,2 +1,2 @@
 include 'core'
-include 'namecoin'
+// include 'namecoin'  // Disabled for v0.17 release - focusing on Dogecoin only

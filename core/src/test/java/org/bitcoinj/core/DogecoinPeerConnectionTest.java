@@ -10,6 +10,7 @@ import org.libdohj.params.DogecoinTestNet3Params;
 import org.bitcoinj.utils.BriefLogFormatter;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 
 import java.net.InetSocketAddress;
 import java.time.Duration;
@@ -32,6 +33,7 @@ public class DogecoinPeerConnectionTest {
     }
     
     @Test
+    @Ignore("Requires internet connection - disabled for v0.17 release")
     public void testDogecoinMainnetPeerDiscovery() throws Exception {
         System.out.println("=== Dogecoin Mainnet Peer Discovery Test ===");
         
@@ -60,6 +62,7 @@ public class DogecoinPeerConnectionTest {
     }
     
     @Test
+    @Ignore("Requires internet connection - disabled for v0.17 release")
     public void testDogecoinTestnetPeerDiscovery() throws Exception {
         System.out.println("=== Dogecoin Testnet Peer Discovery Test ===");
         
