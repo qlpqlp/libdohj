@@ -16,7 +16,7 @@
 
 package org.libdohj.names;
 
-import org.bitcoinj.core.Sha256Hash;
+import org.bitcoinj.base.Sha256Hash;
 import org.bitcoinj.core.Transaction;
 
 // TODO: Document this.

@@ -1,22 +1,22 @@
 apply plugin: 'java-library'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
-version = '0.15-SNAPSHOT'
+version = '0.17-SNAPSHOT'
 archivesBaseName = 'libdohj-core'
 
 dependencies {
-    api 'org.bitcoinj:bitcoinj-core:0.15.10'
+    api 'org.bitcoinj:bitcoinj-core:0.17'
     implementation 'com.madgag.spongycastle:core:1.58.0.0'
-    implementation 'com.google.guava:guava:30.0-android'
+    implementation 'com.google.guava:guava:32.1.3-android'
     implementation 'com.lambdaworks:scrypt:1.4.0'
-    implementation 'com.google.protobuf:protobuf-java:3.13.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.12.12'
-    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'com.google.protobuf:protobuf-java:3.25.3'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'org.slf4j:slf4j-api:2.0.9'
     implementation 'net.jcip:jcip-annotations:1.0'
     compileOnly 'org.fusesource.leveldbjni:leveldbjni-all:1.8'
-    testImplementation 'junit:junit:4.13.1'
-    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.5.2'
-    testImplementation 'org.slf4j:slf4j-jdk14:1.7.30'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
+    testImplementation 'org.slf4j:slf4j-jdk14:2.0.9'
     testImplementation 'org.fusesource.leveldbjni:leveldbjni-all:1.8'
 }
 
@@ -43,4 +43,14 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 artifacts {
     archives sourcesJar
     archives javadocJar
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
 }

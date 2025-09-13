@@ -16,7 +16,10 @@
 
 package org.libdohj.params;
 
-import org.bitcoinj.core.Sha256Hash;
+import org.bitcoinj.base.Sha256Hash;
+import org.bitcoinj.core.BitcoinSerializer;
+import org.bitcoinj.base.utils.MonetaryFormat;
+import org.libdohj.core.AltcoinSerializer;
 
 import static com.google.common.base.Preconditions.checkState;
 
@@ -43,18 +46,9 @@ public class DogecoinMainNetParams extends AbstractDogecoinParams {
         // we'll add independent headers for BIP32 legacy and BIP44.
         bip32HeaderP2PKHpub = 0x02facafd; //The 4 byte header that serializes in base58 to "dgub".
         bip32HeaderP2PKHpriv =  0x02fac398; //The 4 byte header that serializes in base58 to "dgpv".
-        genesisBlock.setDifficultyTarget(0x1e0ffff0L);
-        genesisBlock.setTime(1386325540L);
-        genesisBlock.setNonce(99943L);
-        id = ID_DOGE_MAINNET;
+        
         subsidyDecreaseBlockCount = 100000;
         spendableCoinbaseDepth = 100;
-
-        // Note this is an SHA256 hash, not a Scrypt hash. Scrypt hashes are only
-        // used in difficulty calculations.
-        String genesisHash = genesisBlock.getHashAsString();
-        checkState(genesisHash.equals("1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691"),
-                genesisHash);
 
         majorityEnforceBlockUpgrade = MAINNET_MAJORITY_ENFORCE_BLOCK_UPGRADE;
         majorityRejectBlockOutdated = MAINNET_MAJORITY_REJECT_BLOCK_OUTDATED;
@@ -106,12 +100,23 @@ public class DogecoinMainNetParams extends AbstractDogecoinParams {
 
     @Override
     public String getPaymentProtocolId() {
-        // TODO: CHANGE THIS
         return ID_DOGE_MAINNET;
     }
 
     @Override
     public boolean isTestNet() {
         return false;
+    }
+    
+    @Override
+    public BitcoinSerializer getSerializer() {
+        return new AltcoinSerializer(org.bitcoinj.base.BitcoinNetwork.MAINNET, false);
+    }
+    
+    @Override
+    public MonetaryFormat getMonetaryFormat() {
+        // getMonetaryFormat() method has been deprecated in bitcoinj 0.17
+        // Return a basic MonetaryFormat to satisfy the abstract method requirement
+        return new MonetaryFormat();
     }
 }

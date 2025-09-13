@@ -37,25 +37,25 @@ public class AltcoinBlockTest {
      */
     @Test
     public void testGetVersionFlags() {
-        AltcoinBlock block = new AltcoinBlock(params, 0L);
+        AltcoinBlock block = new AltcoinBlock(org.bitcoinj.base.BitcoinNetwork.MAINNET, 0L);
         BitSet expected = new BitSet(8);
         assertEquals(block.getVersionFlags(), expected);
 
         // Set everything but the version flags
-        block = new AltcoinBlock(params, 0xffff00ff);
+        block = new AltcoinBlock(org.bitcoinj.base.BitcoinNetwork.MAINNET, 0xffff00ff);
         assertEquals(block.getVersionFlags(), expected);
 
         // Set everything
-        block = new AltcoinBlock(params, 0xffffffff);
+        block = new AltcoinBlock(org.bitcoinj.base.BitcoinNetwork.MAINNET, 0xffffffff);
         expected.set(0, 8);
         assertEquals(block.getVersionFlags(), expected);
 
         // Set only the version flags
-        block = new AltcoinBlock(params, 0x0000ff00);
+        block = new AltcoinBlock(org.bitcoinj.base.BitcoinNetwork.MAINNET, 0x0000ff00);
         assertEquals(block.getVersionFlags(), expected);
 
         // Set some of the version flags
-        block = new AltcoinBlock(params, 0x00001700);
+        block = new AltcoinBlock(org.bitcoinj.base.BitcoinNetwork.MAINNET, 0x00001700);
         expected.clear(0, 8);
         expected.set(0, 3);
         expected.set(4);

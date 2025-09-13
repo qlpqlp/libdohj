@@ -15,6 +15,8 @@
  */
 package org.libdohj.params;
 
+import org.bitcoinj.base.Sha256Hash;
+import org.bitcoinj.base.Coin;
 import org.bitcoinj.core.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -116,15 +118,15 @@ public class AbstractDogecoinParamsTest {
         final AltcoinBlock block720;
 
         payload = Util.getBytes(getClass().getResourceAsStream("dogecoin_block239.bin"));
-        block239 = (AltcoinBlock)serializer.makeBlock(payload);
+        block239 = (AltcoinBlock)serializer.makeBlock(java.nio.ByteBuffer.wrap(payload));
         payload = Util.getBytes(getClass().getResourceAsStream("dogecoin_block479.bin"));
-        block479 = (AltcoinBlock)serializer.makeBlock(payload);
+        block479 = (AltcoinBlock)serializer.makeBlock(java.nio.ByteBuffer.wrap(payload));
         payload = Util.getBytes(getClass().getResourceAsStream("dogecoin_block480.bin"));
-        block480 = (AltcoinBlock)serializer.makeBlock(payload);
+        block480 = (AltcoinBlock)serializer.makeBlock(java.nio.ByteBuffer.wrap(payload));
         payload = Util.getBytes(getClass().getResourceAsStream("dogecoin_block719.bin"));
-        block719 = (AltcoinBlock)serializer.makeBlock(payload);
+        block719 = (AltcoinBlock)serializer.makeBlock(java.nio.ByteBuffer.wrap(payload));
         payload = Util.getBytes(getClass().getResourceAsStream("dogecoin_block720.bin"));
-        block720 = (AltcoinBlock)serializer.makeBlock(payload);
+        block720 = (AltcoinBlock)serializer.makeBlock(java.nio.ByteBuffer.wrap(payload));
 
         assertEquals(Sha256Hash.wrap("f9533416310fc4484cf43405a858b06afc9763ad401d267c1835d77e7d225a4e"), block239.getHash());
         assertEquals(Sha256Hash.wrap("ed83c923b532835f6597f70def42910aa9e06880e8a19b68f6b4a787f2b4b69f"), block479.getHash());

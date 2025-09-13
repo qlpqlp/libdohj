@@ -1,5 +1,6 @@
 package org.bitcoinj.core;
 
+import org.bitcoinj.base.Sha256Hash;
 import org.junit.Before;
 import org.junit.Test;
 import org.libdohj.core.AltcoinSerializer;
@@ -43,7 +44,7 @@ public class DogecoinBlockTest {
     public void shouldParseBlock1() throws IOException {
         byte[] payload = Util.getBytes(getClass().getResourceAsStream("dogecoin_block1.bin"));
         AltcoinSerializer serializer = (AltcoinSerializer)params.getDefaultSerializer();
-        final AltcoinBlock block = (AltcoinBlock)serializer.makeBlock(payload);
+        final AltcoinBlock block = (AltcoinBlock)serializer.makeBlock(java.nio.ByteBuffer.wrap(payload));
         assertEquals("82bc68038f6034c0596b6e313729793a887fded6e92a31fbdf70863f89d9bea2", block.getHashAsString());
         assertEquals(1, block.getTransactions().size());
         assertEquals(0x1e0ffff0L, block.getDifficultyTarget());
@@ -56,7 +57,7 @@ public class DogecoinBlockTest {
     public void shouldParseBlock250000() throws IOException {
         byte[] payload = Util.getBytes(getClass().getResourceAsStream("dogecoin_block250000.bin"));
         AltcoinSerializer serializer = (AltcoinSerializer)params.getDefaultSerializer();
-        final AltcoinBlock block = (AltcoinBlock)serializer.makeBlock(payload);
+        final AltcoinBlock block = (AltcoinBlock)serializer.makeBlock(java.nio.ByteBuffer.wrap(payload));
         assertEquals(2469341065L, block.getNonce());
         final AuxPoW auxpow = block.getAuxPoW();
         assertNull(auxpow);
@@ -72,7 +73,7 @@ public class DogecoinBlockTest {
     public void shouldParseBlock371337() throws IOException {
         byte[] payload = Util.getBytes(getClass().getResourceAsStream("dogecoin_block371337.bin"));
         AltcoinSerializer serializer = (AltcoinSerializer)params.getDefaultSerializer();
-        final AltcoinBlock block = (AltcoinBlock)serializer.makeBlock(payload);
+        final AltcoinBlock block = (AltcoinBlock)serializer.makeBlock(java.nio.ByteBuffer.wrap(payload));
         assertEquals("60323982f9c5ff1b5a954eac9dc1269352835f47c2c5222691d80f0d50dcf053", block.getHashAsString());
         assertEquals(0, block.getNonce());
 
@@ -119,7 +120,7 @@ public class DogecoinBlockTest {
     public void shouldParseBlock748634() throws IOException {
         byte[] payload = Util.getBytes(getClass().getResourceAsStream("dogecoin_block748634.bin"));
         AltcoinSerializer serializer = (AltcoinSerializer)params.getDefaultSerializer();
-        final AltcoinBlock block = (AltcoinBlock)serializer.makeBlock(payload);
+        final AltcoinBlock block = (AltcoinBlock)serializer.makeBlock(java.nio.ByteBuffer.wrap(payload));
         assertEquals("bd98a06391115285265c04984e8505229739f6ffa5d498929a91fbe7c281ea7b", block.getHashAsString());
         assertEquals(0, block.getNonce());
 
@@ -142,7 +143,7 @@ public class DogecoinBlockTest {
     public void shouldParseBlock894863() throws IOException {
         byte[] payload = Util.getBytes(getClass().getResourceAsStream("dogecoin_block894863.bin"));
         AltcoinSerializer serializer = (AltcoinSerializer)params.getDefaultSerializer();
-        final AltcoinBlock block = (AltcoinBlock)serializer.makeBlock(payload);
+        final AltcoinBlock block = (AltcoinBlock)serializer.makeBlock(java.nio.ByteBuffer.wrap(payload));
         assertEquals("93a207e6d227f4d60ee64fad584b47255f654b0b6378d78e774123dd66f4fef9", block.getHashAsString());
         assertEquals(0, block.getNonce());
 
@@ -154,7 +155,7 @@ public class DogecoinBlockTest {
         final AuxPoW auxpow = block.getAuxPoW();
         assertNotNull(auxpow);
         final Transaction auxpowCoinbase = auxpow.getCoinbase();
-        assertEquals("c84431cf41f592373cc70db07f6804f945202f5f7baad31a8bbab89aaecb7b8b", auxpowCoinbase.getHashAsString());
+        assertEquals("c84431cf41f592373cc70db07f6804f945202f5f7baad31a8bbab89aaecb7b8b", auxpowCoinbase.getTxId().toString());
 
         assertTrue(auxpow.checkProofOfWork(block.getHash(), block.getDifficultyTargetAsInteger(), true));
     }
@@ -166,7 +167,7 @@ public class DogecoinBlockTest {
     public void shouldCheckAuxPoWProofOfWork() throws IOException {
         byte[] payload = Util.getBytes(getClass().getResourceAsStream("dogecoin_block371337.bin"));
         AltcoinSerializer serializer = (AltcoinSerializer)params.getDefaultSerializer();
-        final AltcoinBlock block = (AltcoinBlock)serializer.makeBlock(payload);
+        final AltcoinBlock block = (AltcoinBlock)serializer.makeBlock(java.nio.ByteBuffer.wrap(payload));
         assertTrue(block.checkProofOfWork(true));
     }
 }

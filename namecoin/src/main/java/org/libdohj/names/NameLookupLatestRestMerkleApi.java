@@ -20,7 +20,7 @@ import org.bitcoinj.core.Block;
 import org.bitcoinj.core.BlockChain;
 import org.bitcoinj.core.MerkleBranch;
 import org.bitcoinj.core.NetworkParameters;
-import org.bitcoinj.core.Sha256Hash;
+import org.bitcoinj.base.Sha256Hash;
 import org.bitcoinj.core.Transaction;
 import org.bitcoinj.core.Utils;
 import org.bitcoinj.store.BlockStore;
@@ -76,9 +76,9 @@ public class NameLookupLatestRestMerkleApi implements NameLookupLatest {
         
         MerkleBranch branch = new MerkleBranch(params, null, merkleHashes, merkleBranchSideMask);
         
-        Transaction tx = new Transaction(params, Utils.HEX.decode(data.rawtx));
+        Transaction tx = new Transaction(params, org.libdohj.core.Utils.HEX.decode(data.rawtx));
         
-        Sha256Hash txId = tx.getHash();
+        Sha256Hash txId = tx.getTxId();
         
         if(! blockHeader.getMerkleRoot().equals(branch.calculateMerkleRoot(txId))) {
             throw new Exception("Merkle proof failed to verify!");

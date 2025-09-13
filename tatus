@@ -1,0 +1,10 @@
+[33m444199b9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;33mtag: [m[1;33mv0.15[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Add dogecoin regtest support
+[33m7e68d7e1[m Add GitHub action for automated testing
+[33m6f72dc60[m Updated Dogecoin and Litecoin network params (#51)
+[33me213af71[m Refresh dependencies (#47)
+[33m982af3f1[m[33m ([m[1;33mtag: [m[1;33mv0.15.9[m[33m)[m Update to bitcoinj 0.15.7 (#44)
+[33mbcf3665a[m[33m ([m[1;33mtag: [m[1;33mv0.14.7[m[33m)[m Update to bitcoinj 0.14.7 (#40)
+[33m889ff26e[m Update fasterxml dependency
+[33m31fb8985[m Namecoin LevelDBTransactionCache: Only store name scriptPubKey in the record, not entire transaction. (#32)
+[33m6ce57fdb[m Remove non-working seed (#30)
+[33m9d20db9a[m Namecoin: add LevelDBTransactionCache algorithm. (#27)

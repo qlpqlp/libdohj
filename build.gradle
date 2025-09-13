@@ -1,17 +1,18 @@
 buildscript {
     repositories {
-        jcenter()
+        gradlePluginPortal()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.6'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.9.4'
     }
 }
 
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
+        gradlePluginPortal()
     }
 
     group = 'com.dogecoin'

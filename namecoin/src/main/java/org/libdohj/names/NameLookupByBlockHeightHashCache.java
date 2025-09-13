@@ -17,7 +17,7 @@
 package org.libdohj.names;
 
 import org.bitcoinj.core.BlockChain;
-import org.bitcoinj.core.Sha256Hash;
+import org.bitcoinj.base.Sha256Hash;
 import org.bitcoinj.core.StoredBlock;
 import org.bitcoinj.core.Transaction;
 import org.bitcoinj.store.BlockStore;
