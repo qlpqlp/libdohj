@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dogecoin/libdohj.svg?branch=master)](https://travis-ci.org/dogecoin/libdohj)
+[![Build Status](https://travis-ci.org/qlpqlp/libdohj.svg?branch=master)](https://travis-ci.org/qlpqlp/libdohj)
 
 # 🐕 libdohj - Dogecoin Java Library
 
@@ -48,7 +48,7 @@ dependencies {
 
 #### Option 3: Build from Source
 ```bash
-git clone https://github.com/dogecoin/libdohj.git
+git clone https://github.com/qlpqlp/libdohj.git
 cd libdohj
 ./gradlew build
 ```
@@ -158,7 +158,7 @@ System.out.println("SegWit HRP: " + testnet.getSegwitAddressHrp());  // tdge
 ### Command Line
 ```bash
 # Clone the repository
-git clone https://github.com/dogecoin/libdohj.git
+git clone https://github.com/qlpqlp/libdohj.git
 cd libdohj
 
 # Build the project
@@ -226,8 +226,8 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/dogecoin/libdohj/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/dogecoin/libdohj/discussions)
+- **Issues**: [GitHub Issues](https://github.com/qlpqlp/libdohj/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/qlpqlp/libdohj/discussions)
 - **Dogecoin Community**: [r/dogecoin](https://reddit.com/r/dogecoin)
 
 ---
